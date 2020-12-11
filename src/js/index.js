@@ -1,0 +1,37 @@
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "./../css/index.scss";
+
+import {Task} from "./task.js";
+
+import {TodoListModel} from "./model/todolistModel.js";
+import {TodoListView} from "./view/todolistView.js";
+import {TodoListController} from "./controller/todolistController.js";
+
+import {NewTaskView} from "./view/newTaskView.js";
+import {NewTaskController} from "./controller/newTaskController.js";
+
+const contentElem = document.getElementById("todolist");
+
+let a = new Task({title: "task1"});
+let b = new Task({title: "task2"});
+let c = new Task({title: "task3"});
+
+let list = new TodoListModel();
+
+list.push(a);
+list.extend([b,c]);
+
+const tdView = new TodoListView(contentElem);
+
+const tdController = new TodoListController(tdView, list)
+tdView.render(list);
+
+const newTaskDiv = document.getElementById("add-task");
+const newView = new NewTaskView(newTaskDiv);
+const newController = new NewTaskController(newView);

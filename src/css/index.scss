@@ -1,0 +1,48 @@
+$body-bg: rgb(88, 140, 184);
+$body-color: rgb(223, 222, 222);
+
+$theme-colors: (
+  "primary": #07ac02,
+  "danger": #ff4136
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+html {
+    font-size: 1rem;
+  }
+  
+  @include media-breakpoint-up(sm) {
+    html {
+      font-size: 1.0rem;
+    }
+  }
+  
+  @include media-breakpoint-up(md) {
+    html {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @include media-breakpoint-up(lg) {
+    html {
+      font-size: 1.2rem;
+    }
+  }
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: shade($body-bg, 42%);
+}
