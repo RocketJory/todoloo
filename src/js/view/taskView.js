@@ -1,5 +1,7 @@
 import {TaskModel} from "./../model/taskModel.js";
+import '@fortawesome/fontawesome-free/js/solid';
 
+/** View for task object, controls DOM */
 export class TaskView {
 
     /**
@@ -30,13 +32,20 @@ export class TaskView {
         checkBox.type = "checkbox";
         checkBox.id = "task" + this.task.key;
         checkBox.classList = "custom-control-input";
+        taskBox.append(checkBox);
+
+        // if (this.task.priority) {
+        //     const taskPriority = document.createElement("span");
+        //     taskPriority.innerHTML = '<i class="fas fa-flag"></i>';
+        //     taskPriority.classList = "priority-"+this.task.priority;
+        //     taskBox.append(taskPriority);
+        // }
 
         const taskLabel = document.createElement("label");
         taskLabel.classList = "custom-control-label";
         taskLabel.innerHTML = this.task.title;
         taskLabel.setAttribute("for", "task" + this.task.key);
-
-        taskBox.append(checkBox, taskLabel);
+        taskBox.append(taskLabel);
 
         taskElem.appendChild(taskBox);
 

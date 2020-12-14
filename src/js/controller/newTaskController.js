@@ -35,8 +35,10 @@ export class NewTaskController {
     addTask(e) {
         const formData = new FormData(this.newTaskView.newTaskForm);
         const taskTitle = formData.get("title");
+        // const taskPriority = formData.get("priority");
 
-        const task = new TaskModel({title: taskTitle});
+        // const task = new TaskModel({title: taskTitle, priority: taskPriority });
+        const task = new TaskModel({title: taskTitle });
         const taskView = new TaskView(this.todolistController.todoListView.elem, task);
         const taskController = new TaskController(task, taskView);
         

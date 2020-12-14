@@ -18,21 +18,24 @@ import {NewTaskController} from "./controller/newTaskController.js";
 
 const contentElem = document.getElementById("todolist");
 
+let list = new TodoListModel();
+
 let a = new TaskModel({title: "task1"});
 let b = new TaskModel({title: "task2"});
 let c = new TaskModel({title: "task3"});
 
-let list = new TodoListModel();
-
-list.push(a);
-list.extend([b,c]);
+list.extend([a,b,c]);
 
 const tdView = new TodoListView(contentElem);
+const tdController = new TodoListController(tdView, list);
 
-const tdController = new TodoListController(tdView, list)
 tdView.render(list);
 
 const newTaskDiv = document.getElementById("add-task");
 const newView = new NewTaskView(newTaskDiv);
 
 const newController = new NewTaskController(newView, tdController);
+
+document.querySelector("#title").addEventListener("click", (e) => {
+    list.log();
+});

@@ -51,4 +51,8 @@ export class TodoListModel {
         return this.tasks.length;
     }
 
+    log() {
+        console.table(this.tasks);
+    }
+
 }

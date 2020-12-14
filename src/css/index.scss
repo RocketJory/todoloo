@@ -38,6 +38,10 @@ html {
   @return mix(black, $color, $percentage);
 }
 
+#todolist {
+  color: rgb(124, 124, 124);
+}
+
 .footer {
   position: absolute;
   bottom: 0;

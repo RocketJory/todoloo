@@ -10,26 +10,46 @@
     <body>
 
         <main class="container">
+
             <div class="row">
-                <div class="col col-lg-4 col-md-6 col-sm-10">
-                    
-                    <h1 class="display-1">Todoloo</h1>
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <h1 id="title" class="display-1">Todoloo</h1>
                     <p class="lead">A Todo-list app.</p>
+                </div>
+            </div>
 
-                    <div id="add-task" class="my-4">
-                        <button id="new-task-btn" class="btn btn-primary"><i class="fas fa-plus-square"></i> New Task</button>
-                        <button id="cancel-task-btn" class="btn btn-secondary">Cancel</button>
+            <div class="row">
 
-                        <form id="new-task-form">
-                            <input type="text" name="title" id="task-title" placeholder="something to do">
-    
-                        </form>
+                <div class="col-lg-6 col-md-6 col-sm-10">
+                    <div id="add-task" class="card">
+                        <div class="card-body">
+                            <button id="new-task-btn" class="btn btn-primary"><i class="fas fa-plus-square"></i> New Task</button>
+                            <button id="cancel-task-btn" class="btn btn-secondary">Cancel</button>
+
+                            <form id="new-task-form">
+                                <input type="text" class="form-control my-2" name="title" id="task-title" placeholder="something to do">
+                                <!-- <div class="form-group row">
+                                    <label for="priority-select" class="col col-form-label">priority:</label>
+                                    <div class="col-sm-8">
+                                        <select id="priority-select" class="custom-select" name="priority" autocomplete="off">
+                                            <option value="" disabled selected>Select priority</option>
+                                            <option value="high">High</option>
+                                            <option value="medium">Medium</option>
+                                            <option value="low">Low</option>
+                                        </select>
+                                    </div>
+                                </div>  -->
+                            </form>
+                        </div>
                     </div>
+                </div>
 
-                    <div id="todolist" class="shadow my-4">
+                <div class="col-lg-6 col-md-6 col-sm-10 my-md-0 my-2">
+                    <div id="todolist" class="shadow">
 
                     </div>
                 </div>
+
             </div>
         </main>
 
