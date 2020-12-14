@@ -1,8 +1,8 @@
-import {Task} from "./../task.js";
+import {TaskModel} from "./taskModel.js";
 
 /** 
  * A todo list of tasks
- * @property {Array.<Task>} tasks - an array of task objects
+ * @property {Array.<TaskModel>} tasks - an array of task objects
 */
 export class TodoListModel {
 
@@ -15,7 +15,7 @@ export class TodoListModel {
 
     /**
      * Append a task to the end of the list
-     * @param {Task} task - a task object
+     * @param {TaskModel} task - a task object
      */
     push(task) {
         this.tasks.push(task);

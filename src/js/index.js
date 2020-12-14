@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./../css/index.scss";
 
-import {Task} from "./task.js";
+import {TaskModel} from "./model/taskModel.js";
 
 import {TodoListModel} from "./model/todolistModel.js";
 import {TodoListView} from "./view/todolistView.js";
@@ -18,9 +18,9 @@ import {NewTaskController} from "./controller/newTaskController.js";
 
 const contentElem = document.getElementById("todolist");
 
-let a = new Task({title: "task1"});
-let b = new Task({title: "task2"});
-let c = new Task({title: "task3"});
+let a = new TaskModel({title: "task1"});
+let b = new TaskModel({title: "task2"});
+let c = new TaskModel({title: "task3"});
 
 let list = new TodoListModel();
 
@@ -34,4 +34,5 @@ tdView.render(list);
 
 const newTaskDiv = document.getElementById("add-task");
 const newView = new NewTaskView(newTaskDiv);
-const newController = new NewTaskController(newView);
+
+const newController = new NewTaskController(newView, tdController);

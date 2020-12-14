@@ -1,7 +1,15 @@
-import {Priority} from "./priority.js";
+import {Priority} from "../priority.js";
 
 /** Entity class representing a task */
-export class Task {
+export class TaskModel {
+
+    static lastKey = 0;
+
+    title;
+    description;
+    dueDate;
+    priority;
+    key;
 
     /**
      * Create a task object
@@ -15,6 +23,10 @@ export class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+
+        this.done = false;
+
+        this.key = this.key = ++TaskModel.lastKey;;
     }
     
 }

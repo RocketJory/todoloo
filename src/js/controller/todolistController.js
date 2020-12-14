@@ -1,5 +1,6 @@
 import {TodoListView} from "../view/todolistView.js";
 import {TodoListModel} from "../model/todolistModel.js";
+import {TaskModel} from "../model/taskModel.js";
 
 /**
  * The controller for the todolist app.
@@ -19,6 +20,15 @@ export class TodoListController {
 
     renderList() {
         this.todoListView.render(this.todoListModel);
+    }
+
+    /**
+     * add a task to the model and update the view
+     * @param {TaskModel} task 
+     */
+    pushTask(task) {
+        this.todoListModel.push(task);
+        this.renderList();
     }
 
 }
