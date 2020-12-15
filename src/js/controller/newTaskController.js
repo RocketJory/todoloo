@@ -24,6 +24,7 @@ export class NewTaskController {
         });
 
         // submitting a new task
+        this.newTaskView.addBtn.addEventListener("click", e => this.addTask(e));
         this.newTaskView.newTaskForm.addEventListener('submit', e => this.addTask(e));
 
     }
