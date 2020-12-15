@@ -42,6 +42,18 @@ html {
   color: rgb(124, 124, 124);
 }
 
+.task-priority {
+  &.priority-high {
+    color: $red;
+  }
+  &.priority-medium {
+    color: $orange;
+  }
+  &.priority-low {
+    color: $yellow;
+  }
+}
+
 .footer {
   position: absolute;
   bottom: 0;

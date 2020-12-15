@@ -28,17 +28,17 @@
 
                             <form id="new-task-form">
                                 <input type="text" class="form-control my-2" name="title" id="task-title" placeholder="something to do">
-                                <!-- <div class="form-group row">
-                                    <label for="priority-select" class="col col-form-label">priority:</label>
-                                    <div class="col-sm-8">
-                                        <select id="priority-select" class="custom-select" name="priority" autocomplete="off">
-                                            <option value="" disabled selected>Select priority</option>
-                                            <option value="high">High</option>
-                                            <option value="medium">Medium</option>
-                                            <option value="low">Low</option>
-                                        </select>
-                                    </div>
-                                </div>  -->
+
+                                <div class="form-row">
+                                    <label class="col" for="task-priority">priority</label>
+                                    <select class="custom-select col" name="priority" id="task-priority">
+                                        <option selected>none</option>
+                                        <option value="low">low</option>
+                                        <option value="medium">medium</option>
+                                        <option value="high">high</option>
+                                    </select>
+                                </div>
+                                
                             </form>
                         </div>
                     </div>

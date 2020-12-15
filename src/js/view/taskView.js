@@ -1,4 +1,5 @@
 import {TaskModel} from "./../model/taskModel.js";
+import {priority} from "./../priority.js";
 import '@fortawesome/fontawesome-free/js/solid';
 
 /** View for task object, controls DOM */
@@ -34,17 +35,23 @@ export class TaskView {
         checkBox.classList = "custom-control-input";
         taskBox.append(checkBox);
 
-        // if (this.task.priority) {
-        //     const taskPriority = document.createElement("span");
-        //     taskPriority.innerHTML = '<i class="fas fa-flag"></i>';
-        //     taskPriority.classList = "priority-"+this.task.priority;
-        //     taskBox.append(taskPriority);
-        // }
-
         const taskLabel = document.createElement("label");
         taskLabel.classList = "custom-control-label";
-        taskLabel.innerHTML = this.task.title;
         taskLabel.setAttribute("for", "task" + this.task.key);
+
+        if (priority.includes(this.task.priority)) {
+            const taskPriority = document.createElement("span");
+            taskPriority.classList = "task-priority ";
+            taskPriority.innerHTML = '<i class="fas fa-flag"></i> ';
+            taskPriority.classList += "priority-"+this.task.priority;
+            taskLabel.append(taskPriority);
+        }
+
+        const taskTitle = document.createElement("span");
+        taskTitle.id = "task-title";
+        taskTitle.innerHTML = this.task.title;
+
+        taskLabel.append(taskTitle);
         taskBox.append(taskLabel);
 
         taskElem.appendChild(taskBox);
@@ -67,7 +74,7 @@ export class TaskView {
     toggleTaskStatus(taskModel) {
         const title = new String(taskModel.title);
 
-        this.taskElem.querySelector("label").innerHTML = (taskModel.done) ? title.strike() : title;
+        this.taskElem.querySelector("#task-title").innerHTML = (taskModel.done) ? title.strike() : title;
     }
 
 

@@ -1,2 +1,1 @@
-export const Priority = {"high": "high", "medium":"medium", "low": "low"};
-Object.freeze(Priority);
+export const priority = ["low","medium","high"];
