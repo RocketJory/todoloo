@@ -36,13 +36,13 @@ export class TaskView {
         taskBox.append(checkBox);
 
         const taskLabel = document.createElement("label");
-        taskLabel.classList = "custom-control-label";
+        taskLabel.classList = "custom-control-label task-info";
         taskLabel.setAttribute("for", "task" + this.task.key);
 
         if (priority.includes(this.task.priority)) {
             const taskPriority = document.createElement("span");
             taskPriority.classList = "task-priority ";
-            taskPriority.innerHTML = '<i class="fas fa-flag"></i> ';
+            taskPriority.innerHTML = '<i class="fas fa-flag"></i>&nbsp;';
             taskPriority.classList += "priority-"+this.task.priority;
             taskLabel.append(taskPriority);
         }
@@ -55,11 +55,25 @@ export class TaskView {
 
         taskBox.append(taskLabel);
 
+        if (this.task.dueDate != null) {
+            const taskDueDate = document.createElement("div");
+            taskDueDate.classList = "task-due-date";
+            taskDueDate.innerHTML = '<i class="far fa-clock"></i>&nbsp;'
+            taskDueDate.innerHTML += this.task.dueDate;
+            taskBox.append(taskDueDate);
+        }
+
         if (this.task.description != null) {
             const taskDescription = document.createElement("div");
             taskDescription.classList = "task-description";
             taskDescription.innerHTML = this.task.description;
             taskBox.append(taskDescription);
+        }
+
+        if (this.task.date != null) {
+            const taskDate = document.createElement("span");
+            taskDate.innerHTML = this.task.dueDate;
+
         }
         
         taskElem.appendChild(taskBox);

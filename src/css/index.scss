@@ -13,6 +13,8 @@ $theme-colors: (
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins/_breakpoints";
 
+@import '../../node_modules/flatpickr/dist/flatpickr.min.css';
+
 html {
     font-size: 1rem;
   }
@@ -47,21 +49,32 @@ html {
   color: rgb(100, 100, 100);
 }
 
-.task-priority {
-  &.priority-high {
-    color: $red;
-  }
-  &.priority-medium {
-    color: $orange;
-  }
-  &.priority-low {
-    color: $yellow;
-  }
-}
-
 .task-box {
+
   .task-description {
     color: lighten($main-text, 50%);
+  }
+
+  .task-info {
+    width: 100%;
+  }
+
+  .task-due-date {
+    color: lighten($main-text, 50%);
+  }
+
+  .task-priority {
+    float: left;
+
+    &.priority-high {
+      color: $red;
+    }
+    &.priority-medium {
+      color: $orange;
+    }
+    &.priority-low {
+      color: $yellow;
+    }
   }
 }
 

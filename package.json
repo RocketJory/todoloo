@@ -19,6 +19,7 @@
     "babel-loader": "^8.2.2",
     "bootstrap": "^4.5.3",
     "css-loader": "^5.0.1",
+    "flatpickr": "^4.6.6",
     "html-webpack-plugin": "^4.5.0",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",

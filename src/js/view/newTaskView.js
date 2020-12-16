@@ -1,3 +1,4 @@
+import flatpickr from "flatpickr";
 
 /**
  * Handles display of the new task box 
@@ -20,6 +21,9 @@ export class NewTaskView {
         this.cancelBtn = this.elem.querySelector("#cancel-task-btn");
 
         this.newTaskForm = this.elem.querySelector("#new-task-form");
+
+        this.dueDate = this.elem.querySelector("#task-due-date");
+        this.initDueDatePicker();
 
         this.taskDetailsBtn = this.elem.querySelector("#task-details-btn");
         this.taskDetails = this.elem.querySelector("#task-details");
@@ -59,6 +63,16 @@ export class NewTaskView {
         }
     }
 
-
+    /**
+     * initialize the flatpickr instance for datetime picking
+     */
+    initDueDatePicker() {
+        const fp = flatpickr(this.dueDate, {
+            enableTime: true,
+            minDate: "today",
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d H:i",
+        });
+    }
 
 }

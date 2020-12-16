@@ -4,7 +4,6 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import "./../css/index.scss";
 
 import {TaskModel} from "./model/taskModel.js";
