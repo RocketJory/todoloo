@@ -1,5 +1,6 @@
 $body-bg: rgb(88, 140, 184);
 $body-color: rgb(223, 222, 222);
+$main-text: rgb(100, 100, 100);
 
 $theme-colors: (
   "primary": #07ac02,
@@ -38,8 +39,12 @@ html {
   @return mix(black, $color, $percentage);
 }
 
+@function lighten($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
 #todolist {
-  color: rgb(124, 124, 124);
+  color: rgb(100, 100, 100);
 }
 
 .task-priority {
@@ -51,6 +56,12 @@ html {
   }
   &.priority-low {
     color: $yellow;
+  }
+}
+
+.task-box {
+  .task-description {
+    color: lighten($main-text, 50%);
   }
 }
 

@@ -52,8 +52,16 @@ export class TaskView {
         taskTitle.innerHTML = this.task.title;
 
         taskLabel.append(taskTitle);
+
         taskBox.append(taskLabel);
 
+        if (this.task.description != null) {
+            const taskDescription = document.createElement("div");
+            taskDescription.classList = "task-description";
+            taskDescription.innerHTML = this.task.description;
+            taskBox.append(taskDescription);
+        }
+        
         taskElem.appendChild(taskBox);
 
         this.taskElem = taskElem;

@@ -14,8 +14,11 @@ export class NewTaskView {
         this._showTaskBox = false;
 
         this.newBtn = this.elem.querySelector("#new-task-btn");
+
+        this.newTaskBtnGroup = this.elem.querySelector("#new-task-btn-group");
         this.addBtn = this.elem.querySelector("#add-task-btn");
         this.cancelBtn = this.elem.querySelector("#cancel-task-btn");
+
         this.newTaskForm = this.elem.querySelector("#new-task-form");
 
         this.renderNewTaskForm();
@@ -35,12 +38,10 @@ export class NewTaskView {
     renderNewTaskBtn() {
         if (this._showTaskBox) {
             this.newBtn.style.display = 'none';
-            this.addBtn.style.display = 'block';
-            this.cancelBtn.style.display = 'block';
+            this.newTaskBtnGroup.style.display = 'inline-flex';
         } else {
             this.newBtn.style.display = 'block';
-            this.addBtn.style.display = 'none';
-            this.cancelBtn.style.display = 'none';
+            this.newTaskBtnGroup.style.display = 'none';
         }
     }
 
