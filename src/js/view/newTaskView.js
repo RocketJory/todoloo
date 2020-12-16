@@ -21,6 +21,11 @@ export class NewTaskView {
 
         this.newTaskForm = this.elem.querySelector("#new-task-form");
 
+        this.taskDetailsBtn = this.elem.querySelector("#task-details-btn");
+        this.taskDetails = this.elem.querySelector("#task-details");
+        this._showDetails = true;
+        this.toggleTaskDetails();
+
         this.renderNewTaskForm();
         this.renderNewTaskBtn();
     }
@@ -42,6 +47,15 @@ export class NewTaskView {
         } else {
             this.newBtn.style.display = 'block';
             this.newTaskBtnGroup.style.display = 'none';
+        }
+    }
+
+    toggleTaskDetails() {
+        this._showDetails = ! this._showDetails;
+        if (this._showDetails) {
+            this.taskDetails.style.display = 'block';
+        } else {
+            this.taskDetails.style.display = 'none';
         }
     }
 

@@ -27,6 +27,8 @@ export class NewTaskController {
         this.newTaskView.addBtn.addEventListener("click", e => this.addTask(e));
         this.newTaskView.newTaskForm.addEventListener('submit', e => this.addTask(e));
 
+        // show task details
+        this.newTaskView.taskDetailsBtn.addEventListener("click", e => this.newTaskView.toggleTaskDetails());
     }
 
     /**
