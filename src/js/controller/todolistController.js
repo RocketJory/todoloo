@@ -68,6 +68,10 @@ export class TodoListController {
         this.render();
     }
 
+    /**
+     * Delete the task identified by the given task key
+     * @param {Number} taskKey - the task key
+     */
     deleteTask(taskKey) {
         this.todoListModel.remove(taskKey);
         this.render();

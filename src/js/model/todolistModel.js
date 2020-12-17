@@ -6,11 +6,18 @@ import {TaskModel} from "./taskModel.js";
 */
 export class TodoListModel {
 
+    localStorageAvailable = (typeof(Storage) !== "undefined");
+
     /**
      * initialize the todo list
      */
     constructor() {
         this.tasks = [];
+
+        if (this.localStorageAvailable) {
+            this.tasks = (localStorage.getItem("tasks") != null) ? this.restoreList() : [];
+            console.log(this.tasks);
+        }
     }
 
     /**
@@ -19,6 +26,8 @@ export class TodoListModel {
      */
     push(task) {
         this.tasks.push(task);
+
+        if (this.localStorageAvailable) { this.saveList(); }
     }
 
     /**
@@ -29,6 +38,7 @@ export class TodoListModel {
         listTasks.forEach(element => {
             this.push(element);
         });
+        if (this.localStorageAvailable) { this.saveList(); }
     }
 
     /**
@@ -38,9 +48,11 @@ export class TodoListModel {
      */
     pop(index = null) {
         if (index) {
-            return this.tasks.splice(index, 1)[0];
+           this.splice(index, 1)[0];
         } else {
-            return this.tasks.pop();
+            const a = this.tasks.pop();
+            if (this.localStorageAvailable) { this.saveList(); }
+            return a;
         }
     }
 
@@ -48,6 +60,13 @@ export class TodoListModel {
         this.tasks = this.tasks.filter(task => {
             return task.key != taskKey;
         });
+        if (this.localStorageAvailable) { this.saveList(); }
+    }
+
+    splice(index = null) {
+        const a = this.tasks.splice(index,1)[0];
+        if (this.localStorageAvailable) { this.saveList(); }
+        return a;
     }
 
     /** 
@@ -59,6 +78,22 @@ export class TodoListModel {
 
     log() {
         console.table(this.tasks);
+    }
+
+    saveList() {
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("tasks", JSON.stringify(this.tasks));
+        } else {
+            console.warn("no local storage");
+        }
+    }
+    
+    restoreList() {
+        if (typeof(Storage) !== "undefined") {
+            return  JSON.parse(localStorage.getItem("tasks"));
+        } else {
+            console.warn("no local storage");
+        }
     }
 
 }
