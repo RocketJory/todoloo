@@ -71,7 +71,7 @@ export class TaskView {
         if (this.task.description != null) {
             const taskDescription = document.createElement("div");
             taskDescription.classList = "task-description";
-            taskDescription.innerHTML = this.task.description;
+            taskDescription.innerHTML = '<i class="fas fa-clipboard"></i>&nbsp;' + this.task.description;
             taskBox.append(taskDescription);
         }
 
