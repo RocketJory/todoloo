@@ -44,6 +44,12 @@ export class TodoListModel {
         }
     }
 
+    remove(taskKey) {
+        this.tasks = this.tasks.filter(task => {
+            return task.key != taskKey;
+        });
+    }
+
     /** 
      * @returns the length of the todo list
      */

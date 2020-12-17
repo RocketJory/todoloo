@@ -15,20 +15,19 @@ import {TodoListController} from "./controller/todolistController.js";
 import {NewTaskView} from "./view/newTaskView.js";
 import {NewTaskController} from "./controller/newTaskController.js";
 
-const contentElem = document.getElementById("todolist");
-
-let list = new TodoListModel();
 
 let a = new TaskModel({title: "task1"});
 let b = new TaskModel({title: "task2"});
 let c = new TaskModel({title: "task3"});
 
+let list = new TodoListModel();
 list.extend([a,b,c]);
+const contentElem = document.getElementById("todolist");
 
 const tdView = new TodoListView(contentElem);
 const tdController = new TodoListController(tdView, list);
 
-tdView.render(list);
+tdController.render();
 
 const newTaskDiv = document.getElementById("add-task");
 const newView = new NewTaskView(newTaskDiv);

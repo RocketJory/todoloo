@@ -16,6 +16,7 @@ export class TaskView {
 
         this.taskElem = null;
         this.checkbox = null;
+        this.deleteBtn = null;
     }
 
     /**
@@ -50,8 +51,12 @@ export class TaskView {
         const taskTitle = document.createElement("span");
         taskTitle.id = "task-title";
         taskTitle.innerHTML = this.task.title;
-
         taskLabel.append(taskTitle);
+
+        const deleteBtn = document.createElement("div");
+        deleteBtn.classList = "task-delete";
+        deleteBtn.innerHTML = '<div class=""><i class="fas fa-trash"></i></div>';
+        taskLabel.append(deleteBtn);
 
         taskBox.append(taskLabel);
 
@@ -73,13 +78,13 @@ export class TaskView {
         if (this.task.date != null) {
             const taskDate = document.createElement("span");
             taskDate.innerHTML = this.task.dueDate;
-
         }
         
         taskElem.appendChild(taskBox);
 
         this.taskElem = taskElem;
         this.checkbox = checkBox;
+        this.deleteBtn = deleteBtn;
 
         this.parentElem.append(taskElem);
 
@@ -95,7 +100,6 @@ export class TaskView {
      */
     toggleTaskStatus(taskModel) {
         const title = new String(taskModel.title);
-
         this.taskElem.querySelector("#task-title").innerHTML = (taskModel.done) ? title.strike() : title;
     }
 

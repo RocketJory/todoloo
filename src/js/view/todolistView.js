@@ -4,6 +4,7 @@ import {TaskController} from "../controller/taskController.js";
 
 /**
  * Todo List View class, defining methods to render the todolist to the DOM
+ * @property {Array.<TaskView>} taskViews - 
  */
 export class TodoListView {
 
@@ -13,26 +14,26 @@ export class TodoListView {
      */
     constructor(elem) {
         this.elem = elem;
+
+        this.createUL();
+    }
+
+    createUL() {
+        const todoListElem = document.createElement("ul");
+        todoListElem.classList = "list-group";
+        this.todoListElem = todoListElem;
+        this.elem.appendChild(todoListElem);
     }
 
     /**
      * Render the todolist to the DOM
-     * @param {TodoList} todoListModel 
      */
-    render(todoListModel) {
-        this.elem.textContent = '';
+    render(taskControllers) {
+        this.todoListElem.textContent = '';
 
-        const todoListElem = document.createElement("ul");
-        todoListElem.classList = "list-group list-group";
-
-        todoListModel.tasks.forEach((task) => {
-            const taskView = new TaskView(todoListElem, task);
-            const taskController = new TaskController(task, taskView);
-
-            taskController.render();
+        taskControllers.forEach(tController => {
+            tController.render();
         });
-
-        this.elem.appendChild(todoListElem);
     }
 
 }

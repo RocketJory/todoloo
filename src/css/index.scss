@@ -63,6 +63,16 @@ html {
     color: lighten($main-text, 50%);
   }
 
+  .task-delete {
+    color: lighten($main-text, 80%);
+    float: right;
+    cursor: pointer;
+    
+    &:hover {
+      color: lighten($main-text, 30%);
+    }
+  }
+
   .task-priority {
     float: left;
 

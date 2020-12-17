@@ -20,6 +20,7 @@ export class TaskController {
     render() {
         this.taskView.render();
 
+        // register event listeners
         this.taskView.checkbox.addEventListener("click", (e) => {
             this.toggleTaskStatus();
         });

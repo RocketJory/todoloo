@@ -70,7 +70,8 @@ export class NewTaskView {
         const fp = flatpickr(this.dueDate, {
             enableTime: true,
             minDate: "today",
-            altFormat: "F j, Y",
+            altInput: true,
+            altFormat: "M j, Y H:i",
             dateFormat: "Y-m-d H:i",
         });
     }
