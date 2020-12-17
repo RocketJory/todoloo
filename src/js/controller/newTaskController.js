@@ -38,6 +38,10 @@ export class NewTaskController {
     addTask(e) {
         const formData = new FormData(this.newTaskView.newTaskForm);
         const taskTitle = formData.get("title");
+
+        if (taskTitle === "") {
+            return;
+        }
         
         // create task
         const task = new TaskModel({title: taskTitle});
