@@ -16,7 +16,6 @@ export class TodoListModel {
 
         if (this.localStorageAvailable) {
             this.tasks = (localStorage.getItem("tasks") != null) ? this.restoreList() : [];
-            console.log(this.tasks);
         }
     }
 
@@ -80,6 +79,9 @@ export class TodoListModel {
         console.table(this.tasks);
     }
 
+    /**
+     * Save the list of tasks to local storage if available
+     */
     saveList() {
         if (typeof(Storage) !== "undefined") {
             localStorage.setItem("tasks", JSON.stringify(this.tasks));
@@ -88,12 +90,20 @@ export class TodoListModel {
         }
     }
     
+    /**
+     * restore the list of tasks from local storage if available.
+     */
     restoreList() {
+        let storage;
         if (typeof(Storage) !== "undefined") {
-            return  JSON.parse(localStorage.getItem("tasks"));
+            storage = JSON.parse(localStorage.getItem("tasks"));
         } else {
             console.warn("no local storage");
+            return;
         }
+        // task keys are important, so we avoid having duplicate keys
+        TaskModel.lastKey = Math.max(...storage.map(t => t.key));
+        return storage;
     }
 
 }

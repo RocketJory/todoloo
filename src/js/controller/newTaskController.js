@@ -26,7 +26,7 @@ export class NewTaskController {
 
         this.newTaskView.taskPriorityBtns.childNodes.forEach(priorityBtn => {
             priorityBtn.addEventListener("click", e => this.togglePriorityBtns(e));
-        })
+        });
 
         // submitting a new task
         this.newTaskView.addBtn.addEventListener("click", e => this.addTask(e));
