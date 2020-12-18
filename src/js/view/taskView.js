@@ -16,7 +16,7 @@ export class TaskView {
 
         this.taskElem = null;
         this.checkbox = null;
-        this.deleteBtn = null;
+        this.deleteBtnElem = null;
     }
 
     /**
@@ -41,57 +41,29 @@ export class TaskView {
         taskLabel.setAttribute("for", "task" + this.task.key);
 
         if (priority.includes(this.task.priority)) {
-            const taskPriority = document.createElement("span");
-            taskPriority.classList = "task-priority ";
-            taskPriority.innerHTML = '<i class="fas fa-flag"></i>&nbsp;';
-            taskPriority.classList += "priority-"+this.task.priority;
-            taskLabel.append(taskPriority);
+            taskLabel.append(this.priorityElem());
         }
 
-        const taskTitle = document.createElement("span");
-        taskTitle.id = "task-title";
-        taskTitle.innerHTML = this.task.title;
-        taskLabel.append(taskTitle);
-
-        const deleteBtn = document.createElement("div");
-        deleteBtn.classList = "task-delete";
-        deleteBtn.innerHTML = '<div class=""><i class="fas fa-trash"></i></div>';
-        taskLabel.append(deleteBtn);
+        taskLabel.append(this.taskTitle());
+        taskLabel.append(this.deleteBtn());
 
         taskBox.append(taskLabel);
 
         if (this.task.dueDate != null) {
-            const taskDueDate = document.createElement("div");
-            taskDueDate.classList = "task-due-date";
-            taskDueDate.innerHTML = '<i class="far fa-clock"></i>&nbsp;'
-            taskDueDate.innerHTML += this.task.dueDate;
-            taskBox.append(taskDueDate);
+            taskBox.append(this.dueDate());
         }
 
         if (this.task.description != null) {
-            const taskDescription = document.createElement("div");
-            taskDescription.classList = "task-description";
-            taskDescription.innerHTML = '<i class="fas fa-clipboard"></i>&nbsp;' + this.task.description;
-            taskBox.append(taskDescription);
-        }
-
-        if (this.task.date != null) {
-            const taskDate = document.createElement("span");
-            taskDate.innerHTML = this.task.dueDate;
+            taskBox.append(this.taskDescription());
         }
         
         taskElem.appendChild(taskBox);
 
         this.taskElem = taskElem;
         this.checkbox = checkBox;
-        this.deleteBtn = deleteBtn;
 
         this.parentElem.append(taskElem);
 
-        // <div class="custom-control custom-checkbox">
-        //     <input type="checkbox" class="custom-control-input" id="task1">
-        //     <label class="custom-control-label" for="task1">task.title</label>
-        // </div>
     }
 
     /**
@@ -101,6 +73,62 @@ export class TaskView {
     toggleTaskStatus(taskModel) {
         const title = new String(taskModel.title);
         this.taskElem.querySelector("#task-title").innerHTML = (taskModel.done) ? title.strike() : title;
+    }
+
+    /**
+     * create the task priority element, save as field, return elem
+     */
+    priorityElem() {
+        const taskPriority = document.createElement("span");
+        taskPriority.classList = "task-priority ";
+        taskPriority.classList += "priority-"+this.task.priority;
+        taskPriority.innerHTML = '<i class="fas fa-flag"></i>&nbsp;';
+        this.taskPriority = taskPriority;
+        return taskPriority;
+    }
+
+    /**
+     * create the task title element, save as field, return elem
+     */
+    taskTitle() {
+        const taskTitle = document.createElement("span");
+        taskTitle.id = "task-title";
+        taskTitle.innerHTML = this.task.title;
+        return taskTitle;
+    }
+
+    /**
+     * create the delete button element, save as field, return elem
+     */
+    deleteBtn() {
+        const deleteBtnElem = document.createElement("div");
+        deleteBtnElem.classList = "task-delete";
+        deleteBtnElem.innerHTML = '<div class=""><i class="fas fa-trash"></i></div>';
+        this.deleteBtnElem = deleteBtnElem;
+        return deleteBtnElem;
+    }
+
+    /**
+     * create the due date element, save as field, return elem
+     */
+    dueDate() {
+        const taskDueDate = document.createElement("div");
+        taskDueDate.classList = "task-due-date";
+        taskDueDate.innerHTML = '<i class="far fa-clock"></i>&nbsp;'
+        taskDueDate.innerHTML += this.task.dueDate;
+        this.taskDueDateElem = taskDueDate;
+        return taskDueDate;
+    }
+
+    /**
+     * create the task description element, save as field, return elem
+     */
+    taskDescription() {
+        const taskDescription = document.createElement("div");
+        taskDescription.classList = "task-description";
+        taskDescription.innerHTML = '<i class="fas fa-clipboard"></i>&nbsp;' + this.task.description;
+        this.taskDescriptionElem = taskDescription;
+        return taskDescription;
     }
 
 

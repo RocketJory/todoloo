@@ -16,12 +16,14 @@ import {NewTaskView} from "./view/newTaskView.js";
 import {NewTaskController} from "./controller/newTaskController.js";
 
 
+
+let list = new TodoListModel();
+
 // let a = new TaskModel({title: "task1"});
 // let b = new TaskModel({title: "task2"});
 // let c = new TaskModel({title: "task3"});
-
-let list = new TodoListModel();
 // list.extend([a,b,c]);
+
 const contentElem = document.getElementById("todolist");
 
 const tdView = new TodoListView(contentElem);
