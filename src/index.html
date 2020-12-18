@@ -48,12 +48,18 @@
                                     <div class="form-group row">
                                         <label class="col col-form-label col-md-4" for="task-priority">priority</label>
                                         <div class="col">
-                                            <select class="custom-select" name="priority" id="task-priority">
+                                            <!-- <select class="custom-select" name="priority" id="task-priority">
                                                 <option selected>none</option>
                                                 <option value="low">low</option>
                                                 <option value="medium">medium</option>
                                                 <option value="high">high</option>
-                                            </select>
+                                            </select> -->
+                                            <div id="task-priority" class="btn-group">
+                                                <button type="button" id="no-priority" class="btn btn-priority btn-secondary active">None</button>
+                                                <button type="button" id="low-priority" class="btn btn-priority btn-secondary " value="low">Low</button>
+                                                <button type="button" id="medium-priority" class="btn btn-priority btn-secondary " value="medium">Med</button>
+                                                <button type="button" id="high-priority" class="btn btn-priority btn-secondary " value="high">High</button>
+                                            </div>
                                         </div>
                                     </div>
 

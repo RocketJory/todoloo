@@ -22,6 +22,8 @@ export class NewTaskView {
 
         this.newTaskForm = this.elem.querySelector("#new-task-form");
 
+        this.taskPriorityBtns = this.elem.querySelector("#task-priority");
+
         this.dueDate = this.elem.querySelector("#task-due-date");
         this.initDueDatePicker();
 

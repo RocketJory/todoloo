@@ -45,6 +45,21 @@ html {
   @return mix(white, $color, $percentage);
 }
 
+.btn-priority {
+  &#low-priority.active {
+    background-color: $yellow;
+  }
+  &#medium-priority.active {
+    background-color: $orange;
+  }
+  &#high-priority.active {
+    background-color: $red;
+  }
+}
+
+
+
+
 #todolist {
   color: rgb(100, 100, 100);
 }

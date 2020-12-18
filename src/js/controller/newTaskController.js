@@ -3,6 +3,7 @@ import {TodoListController} from "./../controller/todolistController.js";
 import {TaskModel} from "../model/taskModel.js";
 import {TaskView } from "../view/taskView.js";
 import {TaskController} from "./../controller/taskController.js";
+import { priority } from "../priority.js";
 
 export class NewTaskController {
 
@@ -22,6 +23,10 @@ export class NewTaskController {
         this.newTaskView.cancelBtn.addEventListener("click", (e) => {
             this.newTaskView.toggleNewTask();
         });
+
+        this.newTaskView.taskPriorityBtns.childNodes.forEach(priorityBtn => {
+            priorityBtn.addEventListener("click", e => this.togglePriorityBtns(e));
+        })
 
         // submitting a new task
         this.newTaskView.addBtn.addEventListener("click", e => this.addTask(e));
@@ -48,7 +53,10 @@ export class NewTaskController {
 
         // add details if needed
         if (this.newTaskView._showDetails) {
-            const taskPriority = formData.get("priority");
+            // const taskPriority = formData.get("priority");
+            const taskPriority = this.getTaskPriority();
+            console.log(taskPriority);
+            
             const taskDescription = formData.get("description");
             const taskDueDate = formData.get("due-date");
             if (taskPriority) {
@@ -68,6 +76,29 @@ export class NewTaskController {
         this.todolistController.pushTask(task);
 
         e.preventDefault();
+    }
+
+    /** toggle the display and active state of the priority button group */
+    togglePriorityBtns(e) {
+        e.target.parentElement.childNodes.forEach(b => {
+            if (b.classList) {
+                b.classList.remove('active');
+            }
+        });
+        e.target.classList.add('active');
+    }
+
+    getTaskPriority() {
+        let priority;
+        this.newTaskView.taskPriorityBtns.childNodes.forEach(priorityBtn => {
+            if (priorityBtn.classList) {
+                if (priorityBtn.classList.contains("active") && priorityBtn.value != null) {
+                    console.log(priorityBtn.value);
+                    priority = priorityBtn.value;
+                }
+            }
+        });
+        return priority;
     }
 
 }
