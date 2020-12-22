@@ -8,7 +8,7 @@ export class TaskView {
     /**
      * Set the view DOM element to attach to
      * @param {HTMLElement} elem 
-     * @param {TaskModel} task
+     * @param {import("./../model/taskModel").TaskModel} task
      */
     constructor(parentElem, task) {
         this.parentElem = parentElem;

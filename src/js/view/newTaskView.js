@@ -25,7 +25,7 @@ export class NewTaskView {
         this.taskPriorityBtns = this.elem.querySelector("#task-priority");
 
         this.dueDate = this.elem.querySelector("#task-due-date");
-        this.initDueDatePicker();
+        this.fp = this.initDueDatePicker();
 
         this.taskDetailsBtn = this.elem.querySelector("#task-details-btn");
         this.taskDetails = this.elem.querySelector("#task-details");
@@ -76,6 +76,7 @@ export class NewTaskView {
             altFormat: "M j, Y H:i",
             dateFormat: "Y-m-d H:i",
         });
+        return fp;
     }
 
 }
