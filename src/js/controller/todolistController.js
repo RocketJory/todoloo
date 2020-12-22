@@ -53,7 +53,7 @@ export class TodoListController {
      */
     attachDeleteBtns() {
         this.taskViews.forEach( taskView => {
-            taskView.deleteBtnElem.addEventListener("click", e => {
+            taskView.deleteBtnElem.addEventListener("click", () => {
                 this.deleteTask(taskView.task.key);
             });
         });

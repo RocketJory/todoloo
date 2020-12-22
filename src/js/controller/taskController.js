@@ -21,16 +21,16 @@ export class TaskController {
         this.taskView.render();
 
         // register event listeners
-        this.taskView.checkbox.addEventListener("click", (e) => {
+        this.taskView.checkbox.addEventListener("click", () => {
             this.toggleTaskStatus();
         });
         if (this.taskView.taskDescriptionElem) {
-            this.taskView.taskDescriptionElem.addEventListener("click", (e) => {
+            this.taskView.taskDescriptionElem.addEventListener("click", () => {
                 alert("asdaf");
             });
         }
         if (this.taskView.taskPriority) {
-            this.taskView.taskPriority.addEventListener("click", (e) => {
+            this.taskView.taskPriority.addEventListener("click", () => {
                 
             });
         }
