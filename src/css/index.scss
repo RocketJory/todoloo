@@ -4,7 +4,7 @@ $main-text: rgb(100, 100, 100);
 
 $theme-colors: (
   "primary": #07ac02,
-  "danger": #ff4136
+  "danger": #ff4136,
 );
 
 @import "node_modules/bootstrap/scss/bootstrap";
@@ -13,33 +13,36 @@ $theme-colors: (
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins/_breakpoints";
 
-@import '../../node_modules/flatpickr/dist/flatpickr.min.css';
+@import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 
 html {
+  font-size: 1rem;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
     font-size: 1rem;
   }
+}
 
-  body {
-    height: 100vh;
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.1rem;
   }
-  
-  @include media-breakpoint-up(sm) {
-    html {
-      font-size: 1.0rem;
-    }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.2rem;
   }
-  
-  @include media-breakpoint-up(md) {
-    html {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @include media-breakpoint-up(lg) {
-    html {
-      font-size: 1.2rem;
-    }
-  }
+}
 
 @function shade($color, $percentage) {
   @return mix(black, $color, $percentage);
@@ -61,15 +64,11 @@ html {
   }
 }
 
-
-
-
 #todolist {
   color: rgb(100, 100, 100);
 }
 
 .task-box {
-
   .task-description {
     color: lighten($main-text, 50%);
   }
@@ -86,7 +85,7 @@ html {
     color: lighten($main-text, 80%);
     float: right;
     cursor: pointer;
-    
+
     &:hover {
       color: lighten($main-text, 30%);
     }
@@ -112,6 +111,5 @@ html {
   bottom: 0;
   width: 100%;
   height: 60px;
-  line-height: 60px;
   background-color: shade($body-bg, 42%);
 }

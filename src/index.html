@@ -1,103 +1,162 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Todoloo</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Todoloo</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <main class="container h-100 d-flex flex-column">
+      <!-- Header -->
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-10">
+          <h1 id="title" class="display-1">Todoloo</h1>
+          <p class="lead">A Todo-list app.</p>
+        </div>
+      </div>
 
-        <main class="container h-100 d-flex flex-column">
+      <div class="row flex-grow-1">
+        <!-- New task form -->
+        <div class="col-lg-6 col-md-6 col-sm-10">
+          <div id="add-task" class="card">
+            <div class="card-body">
+              <button id="new-task-btn" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i> New Task
+              </button>
 
-            <!-- Header -->
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-10">
-                    <h1 id="title" class="display-1">Todoloo</h1>
-                    <p class="lead">A Todo-list app.</p>
+              <form id="new-task-form">
+                <div class="btn-group" id="new-task-btn-group">
+                  <button
+                    type="submit"
+                    id="add-task-btn"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-plus-square"></i>
+                  </button>
+                  <!-- <input type="submit" id="add-task-btn" class="btn btn-primary" value='<i class="fas fa-plus-square"></i>'/> -->
+                  <button id="cancel-task-btn" class="btn btn-secondary">
+                    Cancel
+                  </button>
                 </div>
-            </div>
 
-            <div class="row flex-grow-1">
+                <div class="form-group row mt-2">
+                  <div class="input-group col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="title"
+                      id="task-title"
+                      placeholder="something to do"
+                      required
+                    />
+                    <div class="input-group-append">
+                      <button id="task-details-btn" class="btn" type="button">
+                        <i class="fas fa-ellipsis-h"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
-                <!-- New task form -->
-                <div class="col-lg-6 col-md-6 col-sm-10">
-                    <div id="add-task" class="card">
-                        <div class="card-body">
-                            <button id="new-task-btn" class="btn btn-primary"><i class="fas fa-plus-square"></i> New Task</button>
-                            
-                            <form id="new-task-form">
-
-                                <div class="btn-group" id="new-task-btn-group">
-                                    <button type="submit" id="add-task-btn" class="btn btn-primary"><i class="fas fa-plus-square"></i></button>
-                                    <!-- <input type="submit" id="add-task-btn" class="btn btn-primary" value='<i class="fas fa-plus-square"></i>'/> -->
-                                    <button id="cancel-task-btn" class="btn btn-secondary">Cancel</button>
-                                </div>
-
-                                <div class="form-group row mt-2">
-                                    <div class="input-group col">
-                                        <input type="text" class="form-control" name="title" id="task-title" placeholder="something to do" required/>
-                                        <div class="input-group-append">
-                                            <button id="task-details-btn" class="btn" type="button"><i class="fas fa-ellipsis-h"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="task-details">
-                                    <div class="form-group row">
-                                        <label class="col col-form-label col-md-4" for="task-priority">priority</label>
-                                        <div class="col">
-                                            <!-- <select class="custom-select" name="priority" id="task-priority">
+                <div id="task-details">
+                  <div class="form-group row">
+                    <label
+                      class="col col-form-label col-md-4"
+                      for="task-priority"
+                      >priority</label
+                    >
+                    <div class="col">
+                      <!-- <select class="custom-select" name="priority" id="task-priority">
                                                 <option selected>none</option>
                                                 <option value="low">low</option>
                                                 <option value="medium">medium</option>
                                                 <option value="high">high</option>
                                             </select> -->
-                                            <div id="task-priority" class="btn-group">
-                                                <button type="button" id="no-priority" class="btn btn-priority btn-secondary active">None</button>
-                                                <button type="button" id="low-priority" class="btn btn-priority btn-secondary " value="low">Low</button>
-                                                <button type="button" id="medium-priority" class="btn btn-priority btn-secondary " value="medium">Med</button>
-                                                <button type="button" id="high-priority" class="btn btn-priority btn-secondary " value="high">High</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col col-form-label col-md-4" for="task-due-date">due date</label>
-                                        <div class="col">
-                                            <input name="due-date" class="form-control" type="text" id="task-due-date" placeholder="Select due date"/>
-                                        </div>
-                                    </div>
-    
-                                    <div class="form-group row">
-                                        <label class="col col-form-label col-md-4" for="task-description">description</label>
-                                        <div class="col">
-                                            <input type="text" class="form-control" name="description" id="task-description" placeholder="Notes"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
-                            </form>
-                        </div>
+                      <div id="task-priority" class="btn-group">
+                        <button
+                          type="button"
+                          id="no-priority"
+                          class="btn btn-priority btn-secondary active"
+                        >
+                          None
+                        </button>
+                        <button
+                          type="button"
+                          id="low-priority"
+                          class="btn btn-priority btn-secondary"
+                          value="low"
+                        >
+                          Low
+                        </button>
+                        <button
+                          type="button"
+                          id="medium-priority"
+                          class="btn btn-priority btn-secondary"
+                          value="medium"
+                        >
+                          Med
+                        </button>
+                        <button
+                          type="button"
+                          id="high-priority"
+                          class="btn btn-priority btn-secondary"
+                          value="high"
+                        >
+                          High
+                        </button>
+                      </div>
                     </div>
-                </div>
+                  </div>
 
-                <!-- Todo list -->
-                <div class="col-lg-6 col-md-6 col-sm-10 my-md-0 my-2">
-                    <div id="todolist" class="shadow">
-
+                  <div class="form-group row">
+                    <label
+                      class="col col-form-label col-md-4"
+                      for="task-due-date"
+                      >due date</label
+                    >
+                    <div class="col">
+                      <input
+                        name="due-date"
+                        class="form-control"
+                        type="text"
+                        id="task-due-date"
+                        placeholder="Select due date"
+                      />
                     </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label
+                      class="col col-form-label col-md-4"
+                      for="task-description"
+                      >description</label
+                    >
+                    <div class="col">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="description"
+                        id="task-description"
+                        placeholder="Notes"
+                      />
+                    </div>
+                  </div>
                 </div>
-
+              </form>
             </div>
-        </main>
+          </div>
+        </div>
 
-        <!-- <footer class="footer">
-            <div class="container">
-                created by Jory Seguin
-            </div>
-        </footer> -->
-    </body>
+        <!-- Todo list -->
+        <div class="col-lg-6 col-md-6 col-sm-10 my-md-0 my-2">
+          <div id="todolist" class="shadow"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer mt-auto">
+      <div class="container">created by Jory Seguin</div>
+    </footer>
+  </body>
 </html>
